@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Prediction</title>
+</head>
+<body>
+    <h2>Crop Recommendation Form</h2>
+    <form action="/predict_form" method="post">
+        {% for feature in features %}
+            <label>{{ feature }}:</label>
+            <input type="number" step="any" name="{{ feature }}" required><br><br>
+        {% endfor %}
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if result is not none %}
+        <h3>Predicted Encode Class: {{ result }}</h3>
+        <h3>Recommended Crop: {{ crop }}</h3>
+    {% endif %}
+</body>
+</html>
